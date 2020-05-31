@@ -31,12 +31,22 @@ navigator.geolocation.getCurrentPosition(position => {
         // console.log(places);
 
         places.map(place => {
+          const icon = {
+            url: place.icon,
+            size: new window.google.maps.Size(71, 71),
+            origin: new window.google.maps.Point(0, 0),
+            anchor: new window.google.maps.Point(17, 34),
+            scaledSize: new window.google.maps.Size(25, 25)
+          };
+
           new google.maps.Marker({
+            icon,
             position: {
               lat: place.geometry.location.lat(),
               lng: place.geometry.location.lng()
             },
-            label: place.name
+            map
+            // label: place.name
           });
 
           document.querySelector(
